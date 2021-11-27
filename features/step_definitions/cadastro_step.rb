@@ -11,11 +11,7 @@ Quando('ele executar o fluxo de cadastrado') do
   click @cadastro.btn_create_new_account
   # valida erro no cadastro.
   assert_text('There are 2 errors', count: 1)
-  @cadastro.input_cad_pswd.send_keys(DADOS[:cad_user][:_password])
-  @cadastro.input_post_code.send_keys(DADOS[:cad_user][:_post_cod])
-  select_value @cadastro.seleciona_cad_city, 'United States'
-  select_value @cadastro.seleciona_cad_state, 'Florida'
-  click @cadastro.btn_create_new_account
+  @cadastro.realizado_cadastro_faltando
   # valida se realmente criou a conta nova.
   assert_text('Welcome to your account. Here you can manage all of your personal information and orders.', count: 1)
 end

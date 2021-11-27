@@ -34,6 +34,14 @@ class CadastroPage < ScreenCadastro
     input_address_alias.set(@lias)
   end
 
+  def realizado_cadastro_faltando
+    input_cad_pswd.send_keys(DADOS[:cad_user][:_password])
+    input_post_code.send_keys(DADOS[:cad_user][:_post_cod])
+    select_value seleciona_cad_city, 'United States'
+    select_value seleciona_cad_state, 'Florida'
+    click btn_create_new_account
+  end
+
   def inserir_email
     input_email_create.send_keys(@email)
     click btn_create_account
