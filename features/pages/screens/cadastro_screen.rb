@@ -10,7 +10,7 @@ class ScreenCadastro < SitePrism::Page
   element :input_cad_city, '#city'
   element :input_post_code, 'input#postcode'
   element :input_mobile_phone, '#phone_mobile'
-  element :input_address_alias, '#alias'
+  element :input_address_alias, 'input#alias'
 
   ################# CAMPOS DE VISUALIZAÇÃO ########################33
   element :view_id_Fname, '#firstname'

@@ -1,7 +1,3 @@
-# ler as pages e screens, para não precisar importar nas classes.
-Dir[File.join(File.dirname(__FILE__), '../pages/*_page.rb')].sort.each { |file| require file }
-Dir[File.join(File.dirname(__FILE__), '../pages/screens/*_screen.rb')].sort.each { |file| require file }
-
 module CapybaraExtension
   def jquery(event)
     base.jquery(event)
@@ -43,34 +39,19 @@ module BaseTests
     end
   end
 
+  # Clique com scroll e verifica se o elemento existe e visivel.
   def click(element)
-
-    # Mapeia o elemento e verifica se o elemento existe e visivel.
     element_exists?(element)
     scroll_to(element)
     element.highlight
     element.click
-
-  rescue StandardError => e
-    log e.message
-    log e.backtrace
-    print "Tentando via javascript"
-
   end
 
   def element_exists?(element)
-
     if element.visible?
-      log element.inspect
+      element.inspect
       true
     end
-
-  rescue StandardError => e
-    log e.message
-    log e.backtrace
-    print "Tela #{page.title} - Elemento '#{element.inspect}' não encontrado."
-    false
-
   end
 
   # Custom Function select box with parameter value.
@@ -81,6 +62,14 @@ module BaseTests
     element = find(locator, visible: false)
     scroll_to(element)
     element.find(:option, option_value).select_option
+  end
+
+  def add_screenshot(scenario)
+    sufix = ('error' if scenario.failed?) || 'success'
+    name = scenario.name.tr(' ', '_').downcase
+    foto = save_screenshot("images/#{sufix}-#{name}.png")
+    base64_img = Base64.encode64(File.open(foto, 'rb:UTF-8', &:read))
+    attach(base64_img, 'image/png;base64')
   end
 
 end
