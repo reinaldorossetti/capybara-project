@@ -17,5 +17,7 @@ class ScreenCadastro < SitePrism::Page
 
   ###############  BOTÕES   ######################33
   element :btn_create_account, '#SubmitCreate'
+  element :btn_create_new_account, 'button#submitAccount'
   element :btn_radio_MR, '#id_gender1'
+  element :login_out, 'a[title="Log me out"]'
 end
