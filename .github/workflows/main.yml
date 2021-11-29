@@ -22,16 +22,19 @@ jobs:
     steps:
       - name: Checkout source tree
         uses: actions/checkout@v2
+        
       - name: Install chrome Browser
         if: ${{  matrix.browser == 'chrome' }}
         continue-on-error: true
       - uses: browser-actions/setup-chrome@latest
       - run: chrome --version
+      
       - name: Install firefox Browser
         if: ${{  matrix.browser == 'firefox' }}
         continue-on-error: true
       - uses: browser-actions/setup-firefox@latest
       - run: firefox --version
+      
       - name: Install npm dependencies
         uses: actions/setup-node@v2
         with:
@@ -41,7 +44,8 @@ jobs:
       - name: Step 2 - Grant execute permission for gradlew
         if: always()
         continue-on-error: true
-        run: chmod +x ./webdrivers/**
+      - run: chmod +x ./webdrivers/**
+        
       - name: Set up Ruby
         # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
         # change this to (see https://github.com/ruby/setup-ruby#versioning):
