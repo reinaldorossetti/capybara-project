@@ -33,7 +33,7 @@ jobs:
         with:
           node-version: '14'
       - run: |
-          npm install -g allure-commandline --save-dev
+            npm install -g allure-commandline --save-dev
       - name: Step 2 - Grant execute permission for gradlew
         if: always()
         continue-on-error: true
@@ -48,10 +48,10 @@ jobs:
           ruby-version: 2.7
           bundler-cache: true
       - name: Run tests
-        run: |
-          gem install cucumber
-          bundler install
-          bundle exec cucumber BROWSER=${{matrix.browser}}
+      - run: |
+            gem install cucumber
+            bundler install
+            bundle exec cucumber BROWSER=${{matrix.browser}}
 
       - name: Step 4 - Get allure history
         uses: actions/checkout@v2
