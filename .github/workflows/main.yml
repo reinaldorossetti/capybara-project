@@ -42,10 +42,10 @@ jobs:
           ruby-version: 2.7
           bundler-cache: true
       - name: Run tests
-        run: |
-          gem install cucumber
-          bundler install
-          bundle exec cucumber BROWSER=${{matrix.browser}}
+      - run: |
+            gem install cucumber
+            bundler install
+            bundle exec cucumber BROWSER=${{matrix.browser}}
 
       - name: Step 4 - Get allure history
         uses: actions/checkout@v2
