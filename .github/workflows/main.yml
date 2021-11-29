@@ -4,9 +4,9 @@ name: CI - Testes com Capybara
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main ]
+    branches:
+      - main
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -17,6 +17,7 @@ jobs:
       matrix:
         browser: [ chrome, firefox, opera ]
     runs-on: macos-latest
+
     steps:
       - uses: actions/checkout@v2
       # instalar a lib que vai criar o report do allure
@@ -28,12 +29,9 @@ jobs:
       - name: Install Opera
         if: always()
         continue-on-error: true
-        run:  brew install caskroom/cask/brew-cask 2> /dev/null |
-          brew install --cask opera
+      - run:  brew install caskroom/cask/brew-cask 2> /dev/null |
+              brew install --cask opera
       - run: chmod +x ./webdrivers/**
-      - name: Set up Ruby
-        # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
-        # change this to (see https://github.com/ruby/setup-ruby#versioning):
       - name: Set up Ruby
         # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
         # change this to (see https://github.com/ruby/setup-ruby#versioning):
@@ -43,7 +41,7 @@ jobs:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
       - name: Run tests
-        run: |
+      - run: |
           gem install cucumber
           gem install httparty
           bundler install
