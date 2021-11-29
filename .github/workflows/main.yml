@@ -26,13 +26,13 @@ jobs:
       - name: Install chrome Browser
         if: ${{  matrix.browser == 'chrome' }}
         continue-on-error: true
-      - uses: browser-actions/setup-chrome@latest
+        uses: browser-actions/setup-chrome@latest
       - run: chrome --version
       
       - name: Install firefox Browser
         if: ${{  matrix.browser == 'firefox' }}
         continue-on-error: true
-      - uses: browser-actions/setup-firefox@latest
+        uses: browser-actions/setup-firefox@latest
       - run: firefox --version
       
       - name: Install npm dependencies
