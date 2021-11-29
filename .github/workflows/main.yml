@@ -1,0 +1,96 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI - Testes com Capybara
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build:
+    name: Capybara@${{ matrix.browser}} ${{ matrix.os }} headless=${{ matrix.headless }}
+    strategy:
+      fail-fast: false
+      matrix:
+        headless: [false]
+        browser: [chrome, firefox, opera]
+    runs-on: paygo-runner-linux
+
+    steps:
+      - name: Checkout source tree
+        uses: actions/checkout@v2
+      - name: Install chrome Browser
+        if: ${{  matrix.browser == 'chrome' }}
+        continue-on-error: true
+        run: |
+            wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            echo "deb http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee -a /etc/apt/sources.list.d/google-chrome.list
+            sudo apt-get update -qqy
+            sudo apt-get -qqy install google-chrome-stable
+            chrome --version
+        shell: bash
+      - name: Install firefox Browser
+        if: ${{  matrix.browser == 'firefox' }}
+        continue-on-error: true
+        run: |
+            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A6DCF7707EBC211F
+            sudo apt-add-repository "deb http://ppa.launchpad.net/ubuntu-mozilla-security/ppa/ubuntu bionic main"
+            sudo apt-get update
+            sudo apt -y install firefox
+            firefox --version
+        shell: bash
+      - name: Install Opera Browser
+        if: ${{  matrix.browser == 'opera' }}
+        run: |
+            wget -q -O - https://deb.opera.com/archive.key | sudo apt-key add -
+            sudo add-apt-repository "deb [arch=i386,amd64] https://deb.opera.com/opera-stable/ stable non-free"
+            sudo apt update && sudo apt --yes install opera-stable
+        shell: bash
+      - name: Install npm dependencies
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - run: |
+          npm install -g allure-commandline --save-dev
+      # instalacao do SDK do Java.
+      - name: Set up Ruby
+        # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
+        # change this to (see https://github.com/ruby/setup-ruby#versioning):
+        uses: ruby/setup-ruby@v1
+        # uses: ruby/setup-ruby@ec106b438a1ff6ff109590de34ddc62c540232e0
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+      - name: Run tests
+        run: |
+             gem install cucumber
+             bundler install
+             bundle exec cucumber
+
+      - name: Step 4 - Get allure history
+        uses: actions/checkout@v2
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: 📊 Step 5 - Collect Allure files and generate allure-report folder
+        run: |
+          allure generate ./build/allure-results -o allure-report/
+      - name: 🎁 Step 6 - Publishing Allure artifact to GitHub Actions
+        uses: actions/upload-artifact@v2
+        with:
+          name: allure-report
+          path: allure-report
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages  # default: gh-pages
+          publish_dir: allure-report
+          destination_dir: ${{ matrix.browser}}
