@@ -3,3 +3,4 @@ log/*.html
 log/*.png
 /images/
 .idea
+/webdrivers/

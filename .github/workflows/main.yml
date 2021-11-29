@@ -81,19 +81,10 @@ jobs:
           ref: gh-pages
           path: gh-pages
 
-      - name: 📊 Step 5 - Collect Allure files and generate allure-report folder
-        run: |
-          allure generate ./build/allure-results -o allure-report/
-      - name: 🎁 Step 6 - Publishing Allure artifact to GitHub Actions
-        uses: actions/upload-artifact@v2
-        with:
-          name: allure-report
-          path: allure-report
-
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages  # default: gh-pages
-          publish_dir: allure-report
+          publish_dir: logs
           destination_dir: ${{ matrix.browser}}
