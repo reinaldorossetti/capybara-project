@@ -1,37 +1,27 @@
-# This is a basic workflow to help you get started with Actions
+name: Test com Capybara e Selenium
 
-name: CI - Testes com Capybara
-
-# Controls when the workflow will run
 on:
   push:
     branches:
       - main
+  schedule:
+    - cron: "0 5 * * 5"
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  build:
-    name: Capybara@${{ matrix.browser}} ${{ matrix.os }} headless=${{ matrix.headless }}
+  test:
     strategy:
-      fail-fast: false
       matrix:
-        browser: [ chrome, firefox, opera ]
-    runs-on: macos-latest
-
+        os: [ubuntu-18.04]
+        # Due to https://github.com/actions/runner/issues/849, we have to use quotes for '3.0'
+        ruby: [2.6]
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
-      # instalar a lib que vai criar o report do allure
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
       - name: Install operating system dependencies
         run: npm install -g allure-commandline --save-dev
-      - name: Install Opera
-        if: always()
-        continue-on-error: true
-      - run:  brew install caskroom/cask/brew-cask 2> /dev/null |
-              brew install --cask opera
-      - run: chmod +x ./webdrivers/**
       - name: Set up Ruby
         # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
         # change this to (see https://github.com/ruby/setup-ruby#versioning):
@@ -41,15 +31,26 @@ jobs:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
       - name: Run tests
-      - run: |
-          gem install cucumber
-          gem install httparty
-          bundler install
-          bundle exec cucumber
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+        run: |
+             gem install cucumber
+             gem install httparty
+             bundler install
+             bundle exec cucumber
+          
+      - name: Test marketplace action
+        uses: simple-elf/allure-report-action@master
+        if: always()
+        id: allure-report
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages  # default: gh-pages
-          publish_dir: logs
-          destination_dir: ${{ matrix.browser}}
+          allure_results: report/allure-results
+          gh_pages: gh-pages
+          allure_report: allure-report
+          allure_history: allure-history
+          
+      - name: Deploy report to Github Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v2
+        env:
+          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: allure-history
