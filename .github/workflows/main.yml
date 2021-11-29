@@ -23,16 +23,14 @@ jobs:
       - name: Checkout source tree
       - uses: actions/checkout@v2
         
-      - name: Install chrome Browser
       - uses: browser-actions/setup-chrome@latest
       - run: chrome --version
       
-      - name: Install firefox Browser
       - uses: browser-actions/setup-firefox@latest
       - run: firefox --version
       
       - name: Install npm dependencies
-      - uses: actions/setup-node@v2
+        uses: actions/setup-node@v2
         with:
           node-version: '14'
       - run: |
