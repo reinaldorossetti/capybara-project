@@ -13,6 +13,7 @@ jobs:
       matrix:
         os: [macos-latest]
         ruby: [2.6]
+        browser: [ chrome, firefox, opera ]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
@@ -34,9 +35,8 @@ jobs:
       - name: Run tests
         run: |
              gem install cucumber
-             gem install httparty
              bundler install
-             bundle exec cucumber
+             bundle exec cucumber BROWSER=${{matrix.browser}}
           
       - name: Test marketplace action
         uses: simple-elf/allure-report-action@master
