@@ -18,7 +18,6 @@ jobs:
         headless: [false]
         browser: [chrome, firefox, opera]
     runs-on: macos-latest
-
     steps:
       - name: Checkout source tree
       - uses: actions/checkout@v2
@@ -30,15 +29,15 @@ jobs:
       - run: firefox --version
       
       - name: Install npm dependencies
-        uses: actions/setup-node@v2
+      - uses: actions/setup-node@v2
         with:
           node-version: '14'
       - run: |
-          npm install -g allure-commandline --save-dev
+            npm install -g allure-commandline --save-dev
       - name: Step 2 - Grant execute permission for gradlew
         if: always()
         continue-on-error: true
-      - run: chmod +x ./webdrivers/**
+        run: chmod +x ./webdrivers/**
         
       - name: Set up Ruby
         # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
