@@ -17,7 +17,7 @@ jobs:
       matrix:
         headless: [false]
         browser: [chrome, firefox, opera]
-    runs-on: paygo-runner-linux
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout source tree
