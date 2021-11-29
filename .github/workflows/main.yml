@@ -17,7 +17,7 @@ jobs:
       matrix:
         headless: [false]
         browser: [chrome, firefox, opera]
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     steps:
       - name: Checkout source tree
@@ -25,30 +25,13 @@ jobs:
       - name: Install chrome Browser
         if: ${{  matrix.browser == 'chrome' }}
         continue-on-error: true
-        run: |
-            wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-            echo "deb http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee -a /etc/apt/sources.list.d/google-chrome.list
-            sudo apt-get update -qqy
-            sudo apt-get -qqy install google-chrome-stable
-            chrome --version
-        shell: bash
+      - uses: browser-actions/setup-chrome@latest
+      - run: chrome --version
       - name: Install firefox Browser
         if: ${{  matrix.browser == 'firefox' }}
         continue-on-error: true
-        run: |
-            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A6DCF7707EBC211F
-            sudo apt-add-repository "deb http://ppa.launchpad.net/ubuntu-mozilla-security/ppa/ubuntu bionic main"
-            sudo apt-get update
-            sudo apt -y install firefox
-            firefox --version
-        shell: bash
-      - name: Install Opera Browser
-        if: ${{  matrix.browser == 'opera' }}
-        run: |
-            wget -q -O - https://deb.opera.com/archive.key | sudo apt-key add -
-            sudo add-apt-repository "deb [arch=i386,amd64] https://deb.opera.com/opera-stable/ stable non-free"
-            sudo apt update && sudo apt --yes install opera-stable
-        shell: bash
+      - uses: browser-actions/setup-firefox@latest
+      - run: firefox --version
       - name: Install npm dependencies
         uses: actions/setup-node@v2
         with:
