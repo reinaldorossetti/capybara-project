@@ -15,6 +15,8 @@ require 'faker'
 
 World(BaseTests)
 
+Webdrivers.install_dir = '/webdrivers/install/dir'
+
 BROWSER = ENV['BROWSER']
 DADOS = YAML.load(File.open(File.join(File.dirname(__FILE__) + '/massa/users.yml')))
 

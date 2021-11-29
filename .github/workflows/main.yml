@@ -68,7 +68,7 @@ jobs:
         run: |
              gem install cucumber
              bundler install
-             bundle exec cucumber
+             bundle exec cucumber BROWSER=${{matrix.browser}}
 
       - name: Step 4 - Get allure history
         uses: actions/checkout@v2
