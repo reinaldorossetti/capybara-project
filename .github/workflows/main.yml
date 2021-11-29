@@ -55,7 +55,10 @@ jobs:
           node-version: '14'
       - run: |
           npm install -g allure-commandline --save-dev
-      # instalacao do SDK do Java.
+      - name: Step 2 - Grant execute permission for gradlew
+        if: always()
+        continue-on-error: true
+        run: chmod +x ./webdrivers/**
       - name: Set up Ruby
         # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
         # change this to (see https://github.com/ruby/setup-ruby#versioning):
