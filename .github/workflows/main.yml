@@ -11,12 +11,13 @@ jobs:
   test:
     strategy:
       matrix:
-        os: [ubuntu-18.04]
-        # Due to https://github.com/actions/runner/issues/849, we have to use quotes for '3.0'
+        os: [macos-latest]
         ruby: [2.6]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
+      - uses: browser-actions/setup-firefox@latest
+      - run: firefox --version
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
