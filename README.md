@@ -9,8 +9,8 @@ bundle exec cucumber BROWSER=chrome
 bundle exec cucumber BROWSER=safari
 ```
 
-<a href="reinaldorossetti.github.io/capybara-project/firefox/index.html">firefox report<a>
+<a href="http://reinaldorossetti.github.io/capybara-project/firefox/index.html">firefox report<a>
 
-<a href="reinaldorossetti.github.io/capybara-project/chrome/index.html">chrome report<a>
+<a href="http://reinaldorossetti.github.io/capybara-project/chrome/index.html">chrome report<a>
 
-<a href="reinaldorossetti.github.io/capybara-project/safari/index.html">safari report<a>
+<a href="http://reinaldorossetti.github.io/capybara-project/safari/index.html">safari report<a>
