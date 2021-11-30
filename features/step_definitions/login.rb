@@ -6,12 +6,7 @@ Dado('que o usuário esteja na pagina de Login') do
 end
 
 Quando('fornecer {string} ou {string} inválidos') do |_email, _pswd|
-  @login.input_email.highlight
-  @login.input_email.set(_email).send_keys(:tab)
-  @login.input_pswd.highlight
-  @login.input_pswd.set(_pswd).send_keys(:tab)
-  @login.btn_sign.highlight
-  click @login.btn_sign
+  @login.efetuando_o_login(_email, _pswd)
 end
   
 Então('ele visualiza a mensagem de alerta {string}') do |msg_alert|
