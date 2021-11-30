@@ -50,8 +50,8 @@ AfterConfiguration do |config|
 at_exit do
   time = Time.now.strftime("%d/%m/%Y %H:%M")
   ReportBuilder.configure do |config|
-    config.input_path = 'logs/report.json'
-    config.report_path = 'logs/report'
+    config.input_path = 'report/report.json'
+    config.report_path = './report/'
     config.report_types = [:html]
     config.report_title = 'PF4'
     config.additional_info = { 'Browser': ENV['BROWSER'], 'Ambiente': ENV['TEST_ENV'], 'Horário': time }

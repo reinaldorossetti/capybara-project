@@ -42,5 +42,5 @@ jobs:
         env:
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: logs
+          PUBLISH_DIR: ./report
           destination_dir: ${{ matrix.browser}}

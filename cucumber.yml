@@ -4,8 +4,8 @@ default: -p pretty -p html -p json -p chrome -p homolog --retry 1 --publish-quie
 #ci: -p progress -p html -p json -p chrome_headless -p producao --retry 1 --publish
 
 # report type
-html: --format html --out=logs/report.html
-json: --format json --out=logs/report.json
+html: --format html --out=report/report.html
+json: --format json --out=report/report.json
 
 # log style
 pretty: --format pretty
