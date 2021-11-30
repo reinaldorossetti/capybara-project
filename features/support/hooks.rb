@@ -51,9 +51,9 @@ at_exit do
   time = Time.now.strftime("%d/%m/%Y %H:%M")
   ReportBuilder.configure do |config|
     config.input_path = 'report/report.json'
-    config.report_path = './report/'
+    config.report_path = './report/index'
     config.report_types = [:html]
-    config.report_title = 'PF4'
+    config.report_title = 'Reinaldo QA'
     config.additional_info = { 'Browser': ENV['BROWSER'], 'Ambiente': ENV['TEST_ENV'], 'Horário': time }
  end
   ReportBuilder.build_report
