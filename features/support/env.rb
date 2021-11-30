@@ -36,16 +36,10 @@ Capybara.configure do |_config|
   when 'firefox'
     driver = :selenium
   when 'safari'
-    desired_caps = Selenium::WebDriver::Remote::Capabilities.safari(
-      {
-        accept_insecure_certs: true
-      }
-    )
     Capybara.register_driver :safari_technology_preview do |app|
       Capybara::Selenium::Driver.new(
         app,
-        browser: :safari,
-        desired_capabilities: desired_caps
+        browser: :safari
       )
     end
     driver = :safari_technology_preview
