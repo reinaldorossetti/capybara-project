@@ -31,14 +31,23 @@ Capybara.configure do |_config|
   case BROWSER
   when 'chrome'
     driver = :selenium_chrome
-  when 'chrome_headless'
-    driver = :selenium_chrome_headless
   when 'firefox'
     driver = :selenium
-  when 'firefox_headless'
-    driver = :selenium_headless
   when 'safari'
-    driver = :safari
+    desired_caps = Selenium::WebDriver::Remote::Capabilities.safari(
+      {
+        accept_insecure_certs: true
+      }
+    )
+    Capybara.register_driver :safari_technology_preview do |app|
+      Capybara::Selenium::Driver.new(
+        app,
+        browser: :safari,
+        driver_path: '/Applications/Safari Technology Preview.app/Contents/MacOS/safaridriver',
+        desired_capabilities: desired_caps
+      )
+    end
+    driver = :safari_technology_preview
   when 'edge'
     driver = :edge
   else
