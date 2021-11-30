@@ -45,7 +45,6 @@ Capybara.configure do |_config|
       Capybara::Selenium::Driver.new(
         app,
         browser: :safari,
-        driver_path: '/Applications/Safari Technology Preview.app/Contents/MacOS/safaridriver',
         desired_capabilities: desired_caps
       )
     end
