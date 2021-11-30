@@ -35,7 +35,9 @@ jobs:
         if: ${{  matrix.browser == 'safari' }}
         run: |
             sudo safaridriver --enable
+            sudo "/Applications/Safari Technology Preview.app/Contents/MacOS/safaridriver" --enable
             safaridriver -p 0 &
+            defaults write com.apple.Safari WebKitJavaScriptCanOpenWindowsAutomatically 1
       - name: Run tests
         run: |
              gem install cucumber
