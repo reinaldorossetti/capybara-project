@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Cucumber</title>
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20class%3D%22ml-3%20ml-md-0%22%20viewBox%3D%220%200%2040.59%2046.31%22%20width%3D%2240.59%22%20height%3D%2246.31%22%3E%0A%20%20%20%20%3Cg%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20fill%3D%22%2323d96c%22%20fill-rule%3D%22evenodd%22%20d%3D%22M30.283%203.645q-.528-.317-1.08-.593a16.164%2016.164%200%2000-1.154-.518c-.124-.052-.247-.1-.372-.149-.343-.127-.689-.268-1.042-.371a19.427%2019.427%200%2010-9.792%2037.51v5.56c11.676-1.753%2022.016-10.979%2022.787-23.093.459-7.289-3.193-14.73-9.347-18.346z%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20fill%3D%22%23173647%22%20d%3D%22M15.787%2046.307v-5.935A20.472%2020.472%200%201126.959%201.015c.274.08.557.187.832.291l.248.093c.165.064.291.113.417.167.348.137.739.313%201.208.543q.589.295%201.153.633c6.393%203.756%2010.354%2011.518%209.857%2019.316-.763%2012-10.722%2022.122-23.679%2024.067zm4.8-44.214h-.026a18.366%2018.366%200%2000-3.524%2036.408l.85.165v5.18c11.392-2.224%2020.009-11.272%2020.686-21.922.448-7.033-3.1-14.018-8.83-17.383l-.008-.005A14.691%2014.691%200%200027.654%203.5a5.74%205.74%200%2000-.344-.138l-.27-.1a9.49%209.49%200%2000-.708-.249%2018.425%2018.425%200%2000-5.743-.92z%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20fill%3D%22%23173647%22%20fill-rule%3D%22evenodd%22%20d%3D%22M16.666%2010.58a1.8%201.8%200%20011.583.608%204.184%204.184%200%2001.728%201.107c.645%201.422%201.027%203.461.23%204.605a6.334%206.334%200%2001-3.981-3.087%203.236%203.236%200%2001-.347-1.339%201.957%201.957%200%20011.787-1.894zm-5.683%208.025a7.742%207.742%200%20001.218.737%205.789%205.789%200%20004.883-.138%206.116%206.116%200%2000-3.345-3.45%203.664%203.664%200%2000-1.442-.321%201.884%201.884%200%2000-.319%200%201.766%201.766%200%2000-.995%203.172zm6.1%203.433c-.777-.518-2.379-.309-3.312-.292a4.416%204.416%200%2000-1.666.352%203.5%203.5%200%2000-1.218.738%201.817%201.817%200%20001.409%203.171%203.3%203.3%200%20001.442-.321c1.436-.62%203.141-2.32%203.346-3.648zm2.61%202a6.556%206.556%200%2000-3.724%203.506%203.091%203.091%200%2000-.321%201.314%201.907%201.907%200%20003.3%201.346%207.422%207.422%200%2000.7-1.218c.621-1.333.866-3.72.046-4.948zm2.557-7.167a5.941%205.941%200%20003.7-3.167%203.243%203.243%200%2000.319-1.346%201.915%201.915%200%2000-1.794-1.954%201.832%201.832%200%2000-1.6.641%207.382%207.382%200%2000-.705%201.218c-.62%201.434-.842%203.48.081%204.603zm4.208%2012.115a3.244%203.244%200%2000-.321-1.345%205.869%205.869%200%2000-3.554-3.269%205.386%205.386%200%2000-.226%204.711%204.147%204.147%200%2000.7%201.121c1.133%201.23%203.505.32%203.402-1.218zm4.2-6.28a7.466%207.466%200%2000-1.217-.7%204.425%204.425%200%2000-1.666-.352%206.4%206.4%200%2000-3.188.555%205.959%205.959%200%20003.316%203.386%203.672%203.672%200%20001.442.32%201.8%201.8%200%20001.31-3.209z%22%2F%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E">
+	<style>
+
+.cucumber-react .cucumber-status--passed {
+  color: #2CB14A;
+}
+.cucumber-react .cucumber-status--skipped {
+  color: #00A0CC;
+}
+.cucumber-react .cucumber-status--pending {
+  color: #FFAD33;
+}
+.cucumber-react .cucumber-status--undefined {
+  color: #FFAD33;
+}
+.cucumber-react .cucumber-status--ambiguous {
+  color: #F4EBFD;
+}
+.cucumber-react .cucumber-status--failed {
+  color: #BB0000;
+}
+.cucumber-react .cucumber-status--unknown {
+  color: #B6BECB;
+}
+.cucumber-react h1, .cucumber-react h2, .cucumber-react h3 {
+  padding: 0;
+  margin: 0;
+}
+.cucumber-react a {
+  color: inherit;
+}
+.cucumber-react .gherkin-document-list {
+  font: 14px "Open Sans", sans-serif;
+  color: #161C24;
+  background: #fff;
+  overflow-x: hidden;
+}
+.cucumber-react .cucumber-title {
+  margin-top: 0.3em;
+  margin-bottom: 0;
+  display: inline-block;
+}
+.cucumber-react .cucumber-title__keyword {
+  font-weight: bold;
+}
+.cucumber-react .cucumber-title__text {
+  font-weight: normal;
+}
+.cucumber-react .cucumber-tags {
+  padding: 0;
+  margin-bottom: 0;
+}
+.cucumber-react .cucumber-tags .cucumber-tag {
+  display: inline;
+  list-style-type: none;
+  padding: 4px 8px 4px 8px;
+  margin-right: 6px;
+  background-color: #FFFFFF;
+  border-radius: 6px;
+}
+.cucumber-react .cucumber-feature__icon {
+  padding-top: 0.35em;
+  padding-right: 0.5em;
+}
+.cucumber-react .cucumber-description,
+.cucumber-react .cucumber-children {
+  margin-left: 1em;
+}
+.cucumber-react .cucumber-feature,
+.cucumber-react .cucumber-rule,
+.cucumber-react .cucumber-scenario,
+.cucumber-react .cucumber-background {
+  margin-bottom: 1em;
+}
+.cucumber-react .cucumber-steps {
+  list-style-type: none;
+  padding-left: 10px;
+}
+.cucumber-react .cucumber-steps .cucumber-step {
+  display: flex;
+}
+.cucumber-react .cucumber-steps .cucumber-step__status {
+  padding-top: 0.2em;
+  padding-right: 0.5em;
+}
+.cucumber-react .cucumber-steps .cucumber-step__content {
+  flex-grow: 1;
+  max-width: calc(100% - 1.5em);
+}
+.cucumber-react .cucumber-steps .cucumber-step__keyword {
+  font-weight: bold;
+}
+.cucumber-react .cucumber-steps .cucumber-step__text {
+  font-weight: normal;
+}
+.cucumber-react .cucumber-steps .cucumber-step__param {
+  font-weight: normal;
+  font-style: italic;
+}
+.cucumber-react .cucumber-table {
+  border-collapse: collapse;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+.cucumber-react .cucumber-table__header-cell {
+  border: 1px solid #4B5662;
+  padding: 0.3em;
+}
+.cucumber-react .cucumber-table__cell {
+  border: 1px solid #4B5662;
+  padding: 0.3em;
+}
+.cucumber-react .cucumber-table__cell__status {
+  padding: 0.5em 3px 3px 3px;
+}
+.cucumber-react .cucumber-table__cell__step {
+  flex-grow: 1;
+}
+.cucumber-react .cucumber-code {
+  padding: 0.25em;
+  background-color: #ebebeb;
+}
+.cucumber-react .cucumber-error {
+  padding: 0.5em;
+  margin: 0;
+  overflow-x: auto;
+}
+.cucumber-react .cucumber-no-documents {
+  font: 14px "Open Sans", sans-serif;
+}
+.cucumber-react .cucumber-attachment__icon {
+  margin-right: 0.5em;
+}
+.cucumber-react .cucumber-attachment__image {
+  max-width: 100%;
+  margin-top: 1em;
+}
+.cucumber-react .cucumber-attachment__text {
+  background-color: #ebebeb;
+  padding: 0.5em;
+  overflow-x: auto;
+}
+.cucumber-react .cucumber-anchor {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 0.3em;
+}
+.cucumber-react .cucumber-anchor__link {
+  opacity: 0;
+  transition: all 0.35s ease-in-out;
+  position: absolute;
+  left: -20px;
+  display: flex;
+  align-items: center;
+}
+.cucumber-react .cucumber-anchor__icon {
+  margin-right: 0.5em;
+}
+.cucumber-react .cucumber-anchor:hover a {
+  opacity: 1;
+  width: max-content;
+  transition: all 0.35s ease-in-out;
+}
+.cucumber-react .cucumber-anchor > * {
+  height: 100%;
+  margin-top: 0px;
+}
+
+.cucumber-report-header {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  font: 11px "Open Sans", sans-serif;
+  margin-bottom: 1em;
+}
+.cucumber-report-header > * {
+  padding: 1em;
+}
+.cucumber-report-header .cucumber-status-filter {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.cucumber-report-header .cucumber-status-filter table {
+  width: 100%;
+}
+.cucumber-report-header .cucumber-execution-data {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.cucumber-report-header .cucumber-search-bar {
+  border-right: 0;
+}
+.cucumber-report-header .cucumber-search-bar form.cucumber-search-bar-search {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 9fr 1fr;
+}
+.cucumber-report-header .cucumber-search-bar form.cucumber-search-bar-search input {
+  padding: 0.4em;
+  border-radius: 0;
+}
+.cucumber-report-header .cucumber-search-bar form.cucumber-search-bar-search button {
+  height: 2.2em;
+  padding-left: 0.6em;
+  padding-right: 0.6em;
+}
+.cucumber-report-header .cucumber-search-bar p.help {
+  font-size: 80%;
+}
+.cucumber-report-header .cucumber-search-bar form.cucumber-search-bar-filter ul {
+  display: inline;
+}
+.cucumber-report-header .cucumber-search-bar form.cucumber-search-bar-filter ul li {
+  list-style-type: none;
+  display: inline-block;
+}
+.cucumber-report-header .cucumber-search-bar form.cucumber-search-bar-filter ul li input {
+  display: inline-block;
+  width: auto;
+  height: 0.6em;
+}
+.cucumber-report-header .cucumber-search-bar form.cucumber-search-bar-filter ul li label {
+  padding-right: 1em;
+}
+
+@media only screen and (min-width: 600px) {
+  .cucumber-report-header {
+    grid-template-columns: 1fr 1fr;
+  }
+  .cucumber-report-header .cucumber-status-filter {
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .cucumber-report-header .cucumber-search-bar {
+    grid-column: 1/-1;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .cucumber-report-header {
+    grid-template-columns: 1fr 1fr 2fr;
+  }
+  .cucumber-report-header .cucumber-status-filter {
+    border-bottom: 0;
+  }
+  .cucumber-report-header .cucumber-execution-data {
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 0;
+  }
+  .cucumber-report-header .cucumber-search-bar {
+    grid-column: auto;
+  }
+}
+.accordion {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+}
+
+.accordion__item + .accordion__item {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.accordion__button {
+    background-color: #f4f4f4;
+    color: #444;
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    text-align: left;
+    border: none;
+}
+
+.accordion__button:hover {
+    background-color: #ddd;
+}
+
+.accordion__button:before {
+    display: inline-block;
+    content: '';
+    height: 10px;
+    width: 10px;
+    margin-right: 12px;
+    border-bottom: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    transform: rotate(-45deg);
+}
+
+.accordion__button[aria-expanded='true']::before,
+.accordion__button[aria-selected='true']::before {
+    transform: rotate(45deg);
+}
+
+.accordion__panel {
+    padding: 20px;
+    animation: fadein 0.35s ease-in;
+}
+
+
+	</style>
+</head>
+<body>
+<div id="content">
+</div>
+<script>
+window.CUCUMBER_MESSAGES = [
+{"meta":{"protocolVersion":"15.0.0","implementation":{"name":"cucumber-ruby","version":"6.1.0"},"runtime":{"name":"ruby","version":"2.7.5"},"os":{"name":"darwin19","version":"Darwin Kernel Version 19.6.0: Tue Oct 12 18:34:05 PDT 2021; root:xnu-6153.141.43~1/RELEASE_X86_64"},"cpu":{"name":"x86_64"},"ci":{"url":"https://github.com/reinaldorossetti/capybara-project/actions/runs/1520719759","name":"GitHub Actions","git":{"remote":"https://github.com/reinaldorossetti/capybara-project.git","revision":"09100b81f9ef9cc8488cc677fa5e2e9c21f6d8ac","branch":"main"}}}},
+{"hook":{"id":"7354010e-3da2-4174-89f8-a887eb63d999","sourceReference":{"uri":"vendor/bundle/ruby/2.7.0/gems/capybara-3.35.3/lib/capybara/cucumber.rb","location":{"line":10}}}},
+{"hook":{"id":"7ee2d80e-e99a-4398-961d-115dfb127b4c","sourceReference":{"uri":"vendor/bundle/ruby/2.7.0/gems/capybara-3.35.3/lib/capybara/cucumber.rb","location":{"line":14}}}},
+{"hook":{"id":"9ff1ac85-a750-456f-b0c9-930628b16f43","tagExpression":"@javascript","sourceReference":{"uri":"vendor/bundle/ruby/2.7.0/gems/capybara-3.35.3/lib/capybara/cucumber.rb","location":{"line":18}}}},
+{"hook":{"id":"11b8468a-f93c-4613-b809-030c246fa354","sourceReference":{"uri":"vendor/bundle/ruby/2.7.0/gems/capybara-3.35.3/lib/capybara/cucumber.rb","location":{"line":22}}}},
+{"hook":{"id":"bfd9004f-d88f-41cf-8985-8e6b50c15cb5","sourceReference":{"uri":"features/support/hooks.rb","location":{"line":10}}}},
+{"hook":{"id":"a0d8b0b5-079e-4074-9391-e0f55de2ca62","sourceReference":{"uri":"features/support/hooks.rb","location":{"line":25}}}},
+{"hook":{"id":"416c84f0-c127-4c7b-907f-1db49f9996d8","sourceReference":{"uri":"features/support/hooks.rb","location":{"line":33}}}},
+{"stepDefinition":{"id":"296cccac-7f3b-4468-b821-ac1084ca24f1","pattern":{"source":"que o usuário esteja na pagina de cadastro","type":"CUCUMBER_EXPRESSION"},"sourceReference":{"uri":"features/step_definitions/cadastro_step.rb","location":{"line":1}}}},
+{"stepDefinition":{"id":"31b9a573-b46d-4e84-b970-e6779340e193","pattern":{"source":"ele executar o fluxo de cadastrado","type":"CUCUMBER_EXPRESSION"},"sourceReference":{"uri":"features/step_definitions/cadastro_step.rb","location":{"line":8}}}},
+{"stepDefinition":{"id":"7af3f675-09c1-472b-b855-894422891e9f","pattern":{"source":"ele é direcionado para a area logada","type":"CUCUMBER_EXPRESSION"},"sourceReference":{"uri":"features/step_definitions/cadastro_step.rb","location":{"line":20}}}},
+{"stepDefinition":{"id":"9fb2c391-54e8-4fb6-b881-1a2a4093f8b6","pattern":{"source":"que o usuário esteja na pagina de Login","type":"CUCUMBER_EXPRESSION"},"sourceReference":{"uri":"features/step_definitions/login.rb","location":{"line":1}}}},
+{"stepDefinition":{"id":"ce797158-e810-45a6-8002-dddce2e92259","pattern":{"source":"fornecer {string} ou {string} inválidos","type":"CUCUMBER_EXPRESSION"},"sourceReference":{"uri":"features/step_definitions/login.rb","location":{"line":8}}}},
+{"stepDefinition":{"id":"c98ee6bc-7245-4058-b835-60b74f2289b2","pattern":{"source":"ele visualiza a mensagem de alerta {string}","type":"CUCUMBER_EXPRESSION"},"sourceReference":{"uri":"features/step_definitions/login.rb","location":{"line":12}}}},
+{"stepDefinition":{"id":"d8a69d5a-a1fe-4eb0-91d4-5a3c58cc6dc7","pattern":{"source":"fornecer login inexistente","type":"CUCUMBER_EXPRESSION"},"sourceReference":{"uri":"features/step_definitions/login.rb","location":{"line":17}}}},
+{"stepDefinition":{"id":"77ac4191-f088-4abd-a868-673a190f98ee","pattern":{"source":"seu acesso não é liberado","type":"CUCUMBER_EXPRESSION"},"sourceReference":{"uri":"features/step_definitions/login.rb","location":{"line":21}}}},
+{"source":{"uri":"features/specs/cadastro.feature","data":"#language: pt\n# utf-8\n\n\nFuncionalidade: Cadastrar Usuario\nEu como usuário quero me cadastrar no site para ter acesso as funcionalidades\n\nContexto: \nDado que o usuário esteja na pagina de cadastro\n\n@cad_user\nCenario: Cadastar usuário\nQuando ele executar o fluxo de cadastrado\nEntão ele é direcionado para a area logada","mediaType":"text/x.cucumber.gherkin+plain"}},
+{"source":{"uri":"features/specs/login.feature","data":"#language: pt\n# utf-8\n\n\nFuncionalidade: Logar na home principal\nEu como usuário quero logar no site para ter acesso as funcionalidades\n\nContexto: \nDado que o usuário esteja na pagina de Login\n\n\n@login_invalido\nEsquema do Cenário: Logar com credenciais invalidas\nQuando fornecer \"\u003cemail\u003e\" ou \"\u003csenha\u003e\" inválidos\nEntão ele visualiza a mensagem de alerta \"\u003cmsg_alerta\u003e\"\n\nExemplos:\n|          email            |    senha    |     msg_alerta    |\n|   silvio.tester@p4f.com   |    1234     |  There is 1 error |\n|   tester                  |             |  There is 1 error |\n|   silvio.testep4f.com     |  123456     |  There is 1 error |\n|                           |             |  There is 1 error |\n\n\n@user_inexistente\nCenário: Usuario não cadastrado\nQuando fornecer login inexistente\nEntão seu acesso não é liberado","mediaType":"text/x.cucumber.gherkin+plain"}},
+{"gherkinDocument":{"feature":{"location":{"line":5,"column":1},"language":"pt","keyword":"Funcionalidade","name":"Cadastrar Usuario","description":"Eu como usuário quero me cadastrar no site para ter acesso as funcionalidades","children":[{"background":{"id":"7393c5b7-7205-42e9-8af0-2d12e6244910","location":{"line":8,"column":1},"keyword":"Contexto","steps":[{"location":{"line":9,"column":1},"keyword":"Dado ","text":"que o usuário esteja na pagina de cadastro","id":"e215c58f-78f1-4f47-a778-4295406e1200"}]}},{"scenario":{"id":"4d8e524b-95d8-4703-9c19-3e2f43753bc6","tags":[{"location":{"line":11,"column":1},"name":"@cad_user","id":"a9ecd650-a910-4a59-b28c-9d27a73b7c19"}],"location":{"line":12,"column":1},"keyword":"Cenario","name":"Cadastar usuário","steps":[{"location":{"line":13,"column":1},"keyword":"Quando ","text":"ele executar o fluxo de cadastrado","id":"e717305f-7eb8-4906-b0f4-ea9e76293bef"},{"location":{"line":14,"column":1},"keyword":"Então ","text":"ele é direcionado para a area logada","id":"202cd6ce-1181-4a17-b7b1-9750c6d9ecf5"}]}}]},"comments":[{"location":{"line":2,"column":1},"text":"# utf-8"}],"uri":"features/specs/cadastro.feature"}},
+{"pickle":{"uri":"features/specs/cadastro.feature","id":"27b72fb7-bdea-4187-912c-7d43a079b37d","tags":[{"name":"@cad_user","astNodeId":"a9ecd650-a910-4a59-b28c-9d27a73b7c19"}],"name":"Cadastar usuário","language":"pt","astNodeIds":["4d8e524b-95d8-4703-9c19-3e2f43753bc6"],"steps":[{"id":"2a1fdb26-cfd8-4394-8e74-d8d6813ab64a","astNodeIds":["e215c58f-78f1-4f47-a778-4295406e1200"],"text":"que o usuário esteja na pagina de cadastro"},{"id":"cc3b8c2e-a607-4574-b0b4-2aa9119f63a3","astNodeIds":["e717305f-7eb8-4906-b0f4-ea9e76293bef"],"text":"ele executar o fluxo de cadastrado"},{"id":"ffe7c72b-dd31-4e11-a050-a7ea00d4939e","astNodeIds":["202cd6ce-1181-4a17-b7b1-9750c6d9ecf5"],"text":"ele é direcionado para a area logada"}]}},
+{"gherkinDocument":{"feature":{"location":{"line":5,"column":1},"language":"pt","keyword":"Funcionalidade","name":"Logar na home principal","description":"Eu como usuário quero logar no site para ter acesso as funcionalidades","children":[{"background":{"id":"1e1076fe-2392-4a21-b5ee-965b8ae77cba","location":{"line":8,"column":1},"keyword":"Contexto","steps":[{"location":{"line":9,"column":1},"keyword":"Dado ","text":"que o usuário esteja na pagina de Login","id":"c2c49399-f1c1-409b-88d7-a5054d42b4a5"}]}},{"scenario":{"id":"995abf07-e553-4383-bd10-3c44221c6595","tags":[{"location":{"line":12,"column":1},"name":"@login_invalido","id":"521ad0bf-ce94-4426-acbf-72d2884f78c2"}],"location":{"line":13,"column":1},"keyword":"Esquema do Cenário","name":"Logar com credenciais invalidas","steps":[{"location":{"line":14,"column":1},"keyword":"Quando ","text":"fornecer \"\u003cemail\u003e\" ou \"\u003csenha\u003e\" inválidos","id":"b999f249-e6cc-4ed8-bb25-48fbb4c9128a"},{"location":{"line":15,"column":1},"keyword":"Então ","text":"ele visualiza a mensagem de alerta \"\u003cmsg_alerta\u003e\"","id":"e4005818-4442-4799-be61-2383d5b92fc4"}],"examples":[{"id":"c62584c3-8400-4a18-87ac-e6733c6f39fa","location":{"line":17,"column":1},"keyword":"Exemplos","tableHeader":{"id":"ddbdf842-e6b1-44fd-bfb0-2d7bfea1d675","location":{"line":18,"column":1},"cells":[{"location":{"line":18,"column":12},"value":"email"},{"location":{"line":18,"column":34},"value":"senha"},{"location":{"line":18,"column":49},"value":"msg_alerta"}]},"tableBody":[{"id":"12b8047c-7ae9-4e19-b271-9313865af970","location":{"line":19,"column":1},"cells":[{"location":{"line":19,"column":5},"value":"silvio.tester@p4f.com"},{"location":{"line":19,"column":34},"value":"1234"},{"location":{"line":19,"column":46},"value":"There is 1 error"}]},{"id":"9e6ecc2c-5137-4f98-a697-05cb816393f6","location":{"line":20,"column":1},"cells":[{"location":{"line":20,"column":5},"value":"tester"},{"location":{"line":20,"column":43}},{"location":{"line":20,"column":46},"value":"There is 1 error"}]},{"id":"a0208a74-1162-4491-a08b-960a875af0e0","location":{"line":21,"column":1},"cells":[{"location":{"line":21,"column":5},"value":"silvio.testep4f.com"},{"location":{"line":21,"column":32},"value":"123456"},{"location":{"line":21,"column":46},"value":"There is 1 error"}]},{"id":"4dec3f28-6ea0-4bb2-a662-1dd0fbbefaf2","location":{"line":22,"column":1},"cells":[{"location":{"line":22,"column":29}},{"location":{"line":22,"column":43}},{"location":{"line":22,"column":46},"value":"There is 1 error"}]}]}]}},{"scenario":{"id":"9c3d602e-94a0-4460-a4f5-c350212c1039","tags":[{"location":{"line":25,"column":1},"name":"@user_inexistente","id":"570bbacd-cef4-4577-abe3-b68ab0c799a4"}],"location":{"line":26,"column":1},"keyword":"Cenário","name":"Usuario não cadastrado","steps":[{"location":{"line":27,"column":1},"keyword":"Quando ","text":"fornecer login inexistente","id":"bf8d71ad-6c20-4915-bde0-d7194408aea6"},{"location":{"line":28,"column":1},"keyword":"Então ","text":"seu acesso não é liberado","id":"f5f587fe-f936-494b-8a3f-535d6c85ea32"}]}}]},"comments":[{"location":{"line":2,"column":1},"text":"# utf-8"}],"uri":"features/specs/login.feature"}},
+{"pickle":{"uri":"features/specs/login.feature","id":"57d48b76-5fb2-4ef6-a79b-e53798a19032","name":"Logar com credenciais invalidas","language":"pt","steps":[{"id":"e0f3fc5f-5a03-4511-9a7a-8291e86bcd33","astNodeIds":["c2c49399-f1c1-409b-88d7-a5054d42b4a5"],"text":"que o usuário esteja na pagina de Login"},{"id":"79424d6a-077e-4533-9702-0c56b422c982","astNodeIds":["b999f249-e6cc-4ed8-bb25-48fbb4c9128a","12b8047c-7ae9-4e19-b271-9313865af970"],"text":"fornecer \"silvio.tester@p4f.com\" ou \"1234\" inválidos"},{"id":"f74de46e-72bf-4b1a-a561-97918efab7ed","astNodeIds":["e4005818-4442-4799-be61-2383d5b92fc4","12b8047c-7ae9-4e19-b271-9313865af970"],"text":"ele visualiza a mensagem de alerta \"There is 1 error\""}],"tags":[{"name":"@login_invalido","astNodeId":"521ad0bf-ce94-4426-acbf-72d2884f78c2"}],"astNodeIds":["995abf07-e553-4383-bd10-3c44221c6595","12b8047c-7ae9-4e19-b271-9313865af970"]}},
+{"pickle":{"uri":"features/specs/login.feature","id":"455e3d29-a36a-409d-bf4c-7f6f195e7f18","name":"Logar com credenciais invalidas","language":"pt","steps":[{"id":"96fab52e-5448-42b4-a55b-2d75fdc272cd","astNodeIds":["c2c49399-f1c1-409b-88d7-a5054d42b4a5"],"text":"que o usuário esteja na pagina de Login"},{"id":"9cd8ff94-41ad-4112-a92b-219b58e0e7e2","astNodeIds":["b999f249-e6cc-4ed8-bb25-48fbb4c9128a","9e6ecc2c-5137-4f98-a697-05cb816393f6"],"text":"fornecer \"tester\" ou \"\" inválidos"},{"id":"da270243-bf5d-4c70-bdf8-9ddba1c9638e","astNodeIds":["e4005818-4442-4799-be61-2383d5b92fc4","9e6ecc2c-5137-4f98-a697-05cb816393f6"],"text":"ele visualiza a mensagem de alerta \"There is 1 error\""}],"tags":[{"name":"@login_invalido","astNodeId":"521ad0bf-ce94-4426-acbf-72d2884f78c2"}],"astNodeIds":["995abf07-e553-4383-bd10-3c44221c6595","9e6ecc2c-5137-4f98-a697-05cb816393f6"]}},
+{"pickle":{"uri":"features/specs/login.feature","id":"20d1c369-cd34-4536-89ce-f23bf7c26a0f","name":"Logar com credenciais invalidas","language":"pt","steps":[{"id":"f23a274e-0fad-4bbf-b3ee-bd91ba0ee356","astNodeIds":["c2c49399-f1c1-409b-88d7-a5054d42b4a5"],"text":"que o usuário esteja na pagina de Login"},{"id":"63966f87-78a1-4b39-8dbb-0e1b654b660e","astNodeIds":["b999f249-e6cc-4ed8-bb25-48fbb4c9128a","a0208a74-1162-4491-a08b-960a875af0e0"],"text":"fornecer \"silvio.testep4f.com\" ou \"123456\" inválidos"},{"id":"b6490fc2-9b68-4973-ad21-287f122549e3","astNodeIds":["e4005818-4442-4799-be61-2383d5b92fc4","a0208a74-1162-4491-a08b-960a875af0e0"],"text":"ele visualiza a mensagem de alerta \"There is 1 error\""}],"tags":[{"name":"@login_invalido","astNodeId":"521ad0bf-ce94-4426-acbf-72d2884f78c2"}],"astNodeIds":["995abf07-e553-4383-bd10-3c44221c6595","a0208a74-1162-4491-a08b-960a875af0e0"]}},
+{"pickle":{"uri":"features/specs/login.feature","id":"354d1e52-8ffe-452a-9f85-ccea2bfaca77","name":"Logar com credenciais invalidas","language":"pt","steps":[{"id":"0463ddc2-be9a-40dc-ae7f-6dce86b83d7f","astNodeIds":["c2c49399-f1c1-409b-88d7-a5054d42b4a5"],"text":"que o usuário esteja na pagina de Login"},{"id":"e1e825a5-7547-4848-8ca1-8741a4012925","astNodeIds":["b999f249-e6cc-4ed8-bb25-48fbb4c9128a","4dec3f28-6ea0-4bb2-a662-1dd0fbbefaf2"],"text":"fornecer \"\" ou \"\" inválidos"},{"id":"2686a760-6214-45e9-8906-b4d5f86d618a","astNodeIds":["e4005818-4442-4799-be61-2383d5b92fc4","4dec3f28-6ea0-4bb2-a662-1dd0fbbefaf2"],"text":"ele visualiza a mensagem de alerta \"There is 1 error\""}],"tags":[{"name":"@login_invalido","astNodeId":"521ad0bf-ce94-4426-acbf-72d2884f78c2"}],"astNodeIds":["995abf07-e553-4383-bd10-3c44221c6595","4dec3f28-6ea0-4bb2-a662-1dd0fbbefaf2"]}},
+{"pickle":{"uri":"features/specs/login.feature","id":"6d919b03-6be3-4f86-a91a-75c5b95b2146","tags":[{"name":"@user_inexistente","astNodeId":"570bbacd-cef4-4577-abe3-b68ab0c799a4"}],"name":"Usuario não cadastrado","language":"pt","astNodeIds":["9c3d602e-94a0-4460-a4f5-c350212c1039"],"steps":[{"id":"bb2d2e98-d47b-41f9-aa8c-afb6960fbd1b","astNodeIds":["c2c49399-f1c1-409b-88d7-a5054d42b4a5"],"text":"que o usuário esteja na pagina de Login"},{"id":"29ff5362-84e3-4e8f-bbdc-9139f490a03c","astNodeIds":["bf8d71ad-6c20-4915-bde0-d7194408aea6"],"text":"fornecer login inexistente"},{"id":"70e1f88b-1dd1-4f09-8eef-978a50531380","astNodeIds":["f5f587fe-f936-494b-8a3f-535d6c85ea32"],"text":"seu acesso não é liberado"}]}},
+{"testCase":{"id":"e09adbd1-f812-4934-bb0a-b4082fca4a59","pickleId":"27b72fb7-bdea-4187-912c-7d43a079b37d","testSteps":[{"id":"86129b2e-c48d-4feb-9eb8-603bf0a76ffd","hookId":"7ee2d80e-e99a-4398-961d-115dfb127b4c"},{"id":"90614bd8-2174-438d-a391-6f1b83bcaf15","hookId":"11b8468a-f93c-4613-b809-030c246fa354"},{"id":"a36b16aa-f2c9-4b4f-9601-c921eea793b8","hookId":"bfd9004f-d88f-41cf-8985-8e6b50c15cb5"},{"id":"6c92c582-c590-458a-9e34-6962d280d4db","pickleStepId":"2a1fdb26-cfd8-4394-8e74-d8d6813ab64a","stepDefinitionIds":["296cccac-7f3b-4468-b821-ac1084ca24f1"],"stepMatchArgumentsLists":[{}]},{"id":"2a5258cf-9e5b-4776-8708-bb7a1215532f","pickleStepId":"cc3b8c2e-a607-4574-b0b4-2aa9119f63a3","stepDefinitionIds":["31b9a573-b46d-4e84-b970-e6779340e193"],"stepMatchArgumentsLists":[{}]},{"id":"67fafc41-eab4-4fb1-b261-1bf83e642c49","pickleStepId":"ffe7c72b-dd31-4e11-a050-a7ea00d4939e","stepDefinitionIds":["7af3f675-09c1-472b-b855-894422891e9f"],"stepMatchArgumentsLists":[{}]},{"id":"5da42b81-9cd1-4bfe-9a1f-4756d5791843","hookId":"a0d8b0b5-079e-4074-9391-e0f55de2ca62"},{"id":"2a12d364-41db-4213-b520-ca6fa4d7275f","hookId":"7354010e-3da2-4174-89f8-a887eb63d999"}]}},
+{"testCase":{"id":"ccf916af-0c1d-4ba5-a460-159e286fe39a","pickleId":"57d48b76-5fb2-4ef6-a79b-e53798a19032","testSteps":[{"id":"50c34a3a-c594-43c3-8ac1-df34f62993c0","hookId":"7ee2d80e-e99a-4398-961d-115dfb127b4c"},{"id":"c2bbfe9b-489f-479f-8ec6-3fd17dce18a3","hookId":"11b8468a-f93c-4613-b809-030c246fa354"},{"id":"1138df8f-0dc1-435f-89c9-6ed15ab96970","hookId":"bfd9004f-d88f-41cf-8985-8e6b50c15cb5"},{"id":"c899cd04-0cca-4a5b-9ff3-10e965454436","pickleStepId":"e0f3fc5f-5a03-4511-9a7a-8291e86bcd33","stepDefinitionIds":["9fb2c391-54e8-4fb6-b881-1a2a4093f8b6"],"stepMatchArgumentsLists":[{}]},{"id":"906c2e80-e495-49e6-bcb1-550cb3ff06be","pickleStepId":"79424d6a-077e-4533-9702-0c56b422c982","stepDefinitionIds":["ce797158-e810-45a6-8002-dddce2e92259"],"stepMatchArgumentsLists":[{"stepMatchArguments":[{"group":{"start":9,"value":"\"silvio.tester@p4f.com\"","children":[{"start":10,"value":"silvio.tester@p4f.com","children":[{}]},{"children":[{}]}]},"parameterTypeName":"string"},{"group":{"start":36,"value":"\"1234\"","children":[{"start":37,"value":"1234","children":[{}]},{"children":[{}]}]},"parameterTypeName":"string"}]}]},{"id":"78c4cf1a-41ea-4276-9444-2ef6d160a19a","pickleStepId":"f74de46e-72bf-4b1a-a561-97918efab7ed","stepDefinitionIds":["c98ee6bc-7245-4058-b835-60b74f2289b2"],"stepMatchArgumentsLists":[{"stepMatchArguments":[{"group":{"start":35,"value":"\"There is 1 error\"","children":[{"start":36,"value":"There is 1 error","children":[{}]},{"children":[{}]}]},"parameterTypeName":"string"}]}]},{"id":"e7cc4377-a442-4dc7-9604-434e59418b98","hookId":"a0d8b0b5-079e-4074-9391-e0f55de2ca62"},{"id":"337d32a6-d1fe-4e9b-ae6a-a2250ef15c0e","hookId":"7354010e-3da2-4174-89f8-a887eb63d999"}]}},
+{"testCase":{"id":"ba05e639-e824-4ce6-a129-26cbe82449cb","pickleId":"455e3d29-a36a-409d-bf4c-7f6f195e7f18","testSteps":[{"id":"a6eba594-ca5e-4883-bfae-74ea82adaca8","hookId":"7ee2d80e-e99a-4398-961d-115dfb127b4c"},{"id":"82ba3e24-bd76-4975-81dc-fc0a43d3c71e","hookId":"11b8468a-f93c-4613-b809-030c246fa354"},{"id":"d483f52e-6d29-4fa7-852b-63397f044638","hookId":"bfd9004f-d88f-41cf-8985-8e6b50c15cb5"},{"id":"87938128-9b2d-4ec9-9f1d-190a5d4c0646","pickleStepId":"96fab52e-5448-42b4-a55b-2d75fdc272cd","stepDefinitionIds":["9fb2c391-54e8-4fb6-b881-1a2a4093f8b6"],"stepMatchArgumentsLists":[{}]},{"id":"c138d7e6-dd62-4dd0-a561-503cd2b943f5","pickleStepId":"9cd8ff94-41ad-4112-a92b-219b58e0e7e2","stepDefinitionIds":["ce797158-e810-45a6-8002-dddce2e92259"],"stepMatchArgumentsLists":[{"stepMatchArguments":[{"group":{"start":9,"value":"\"tester\"","children":[{"start":10,"value":"tester","children":[{}]},{"children":[{}]}]},"parameterTypeName":"string"},{"group":{"start":21,"value":"\"\"","children":[{"start":22,"children":[{}]},{"children":[{}]}]},"parameterTypeName":"string"}]}]},{"id":"d0062d8b-667d-45ef-be95-98548e55cb94","pickleStepId":"da270243-bf5d-4c70-bdf8-9ddba1c9638e","stepDefinitionIds":["c98ee6bc-7245-4058-b835-60b74f2289b2"],"stepMatchArgumentsLists":[{"stepMatchArguments":[{"group":{"start":35,"value":"\"There is 1 error\"","children":[{"start":36,"value":"There is 1 error","children":[{}]},{"children":[{}]}]},"parameterTypeName":"string"}]}]},{"id":"133e5816-be86-461f-b10f-c33d74897e06","hookId":"a0d8b0b5-079e-4074-9391-e0f55de2ca62"},{"id":"cef6e222-a9e5-4d3b-bd5a-db2337f472c0","hookId":"7354010e-3da2-4174-89f8-a887eb63d999"}]}}
