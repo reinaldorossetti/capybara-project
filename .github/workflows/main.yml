@@ -34,7 +34,6 @@ jobs:
       - name: Run tests
         run: |
              gem install cucumber
-             bundler install
              bundle exec cucumber BROWSER=${{matrix.browser}}
           
       - name: Test marketplace action
