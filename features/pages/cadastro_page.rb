@@ -1,5 +1,3 @@
-require_relative 'screens/cadastro_screen'
-
 class CadastroPage < ScreenCadastro
 
   include BaseTests

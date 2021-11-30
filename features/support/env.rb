@@ -23,9 +23,11 @@ DADOS = YAML.load(File.open(File.join(File.dirname(__FILE__) + '/massa/users.yml
 # local windows informe o caminho do chrome.
 #Selenium::WebDriver::Chrome.path = 'C:\Program Files\Google\Chrome\Application\chrome.exe'
 
-# ler as pages e screens, para não precisar importar nas classes.
+# ler as screens, para não precisar importar nas classes.
+Dir[File.join(File.dirname(__FILE__), '../pages/**/*_screen.rb')].sort.each { |file| require file }
+# ler as pages
 Dir[File.join(File.dirname(__FILE__), '../pages/*_page.rb')].sort.each { |file| require file }
-Dir[File.join(File.dirname(__FILE__), '../pages/screens/*_screen.rb')].sort.each { |file| require file }
+
 
 Capybara.configure do |_config|
   case BROWSER
