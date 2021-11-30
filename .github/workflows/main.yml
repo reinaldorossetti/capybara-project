@@ -34,9 +34,10 @@ jobs:
       - name: Install Safari Driver
         if: ${{  matrix.browser == 'safari' }}
         run: |
-            sudo safaridriver --enable
-            safaridriver -p 0 &
-            defaults write com.apple.Safari WebKitJavaScriptCanOpenWindowsAutomatically 1
+              defaults write com.apple.Safari IncludeDevelopMenu YES
+              defaults write com.apple.Safari AllowRemoteAutomation 1
+              sudo safaridriver --enable
+              safaridriver -p 0 &
       - name: Run tests
         run: |
              gem install cucumber
