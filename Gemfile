@@ -2,7 +2,7 @@
 
 source 'http://rubygems.org'
 
-gem 'capybara'                  
+gem 'capybara'
 gem 'cucumber'
 gem 'faker'
 gem 'json_matchers'

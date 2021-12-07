@@ -15,29 +15,34 @@ require 'faker'
 
 World(BaseTests)
 
-BROWSER = 'chrome' #ENV['BROWSER']
+Webdrivers.install_dir = File.dirname(__FILE__) + '/../../webdrivers/install/dir'
+
+BROWSER = ENV['BROWSER']
 DADOS = YAML.load(File.open(File.join(File.dirname(__FILE__) + '/massa/users.yml')))
 
-Selenium::WebDriver::Chrome.path = 'C:\Program Files\Google\Chrome\Application\chrome.exe'
+# local windows informe o caminho do chrome.
+#Selenium::WebDriver::Chrome.path = 'C:\Program Files\Google\Chrome\Application\chrome.exe'
 
-# ler as pages e screens, para não precisar importar nas classes.
+# ler as screens, para não precisar importar nas classes.
+Dir[File.join(File.dirname(__FILE__), '../pages/**/*_screen.rb')].sort.each { |file| require file }
+# ler as pages
 Dir[File.join(File.dirname(__FILE__), '../pages/*_page.rb')].sort.each { |file| require file }
-Dir[File.join(File.dirname(__FILE__), '../pages/screens/*_screen.rb')].sort.each { |file| require file }
+
 
 Capybara.configure do |_config|
   case BROWSER
   when 'chrome'
     driver = :selenium_chrome
-  when 'chrome_headless'
-    driver = :selenium_chrome_headless
   when 'firefox'
     driver = :selenium
-  when 'firefox_headless'
-    driver = :selenium_headless
   when 'safari'
-    driver = :safari
-  when 'ie'
-    driver = :ie
+    Capybara.register_driver :safari_technology_preview do |app|
+      Capybara::Selenium::Driver.new(
+        app,
+        browser: :safari
+      )
+    end
+    driver = :safari_technology_preview
   when 'edge'
     driver = :edge
   else
