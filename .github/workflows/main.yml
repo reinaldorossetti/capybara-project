@@ -39,6 +39,8 @@ jobs:
           sudo safaridriver --enable
           safaridriver -p 0 &
       - name: Run tests
+        if: always()
+        continue-on-error: true
         run: |
           gem install cucumber
           bundle exec cucumber BROWSER=${{matrix.browser}}
