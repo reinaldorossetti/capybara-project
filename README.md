@@ -5,7 +5,7 @@ feature cadastro >> cadastro_step >> cadastro_page >> cadastro_screen
 
 Teste de Janelas:
 ````
-bundle exec cucumber -t '@janelas'
+bundle exec cucumber -t '@janelas' BROWSER=firefox
 ````
 Rodar todos os testes:
 ```

@@ -27,5 +27,6 @@ Quando('eu entro na janela e verifico a mensagem - opção 2') do
   expect(current_url).to eq 'https://automacaocombatista.herokuapp.com/mudancadefoco/newwindow'
   expect(@mensagem.text).to eq 'Você Abriu uma nova janela!!'
   windows.last.close # fecha a ultima janela
+  switch_to_window windows.first
   sleep(5) # somente pra ver a janela
 end
