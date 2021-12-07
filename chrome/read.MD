@@ -1,1 +1,0 @@
-A pasta report contém os relatórios dos testes.
