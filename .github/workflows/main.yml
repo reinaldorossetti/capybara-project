@@ -1,4 +1,4 @@
-name: Test com Httparty
+name: Test com Capybara e Selenium
 
 on:
   push:
@@ -11,12 +11,13 @@ jobs:
   test:
     strategy:
       matrix:
-        os: [ubuntu-18.04]
-        # Due to https://github.com/actions/runner/issues/849, we have to use quotes for '3.0'
-        ruby: [2.6]
+        os: [macos-latest]
+        browser: [ chrome, firefox, safari ]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
+      - uses: browser-actions/setup-firefox@latest
+      - run: firefox --version
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
@@ -28,29 +29,25 @@ jobs:
         uses: ruby/setup-ruby@v1
         # uses: ruby/setup-ruby@ec106b438a1ff6ff109590de34ddc62c540232e0
         with:
-          ruby-version: ${{ matrix.ruby }}
+          ruby-version: 2.7
           bundler-cache: true
+      - name: Install Safari Driver
+        if: ${{  matrix.browser == 'safari' }}
+        run: |
+          defaults write com.apple.Safari IncludeDevelopMenu YES
+          defaults write com.apple.Safari AllowRemoteAutomation 1
+          sudo safaridriver --enable
+          safaridriver -p 0 &
       - name: Run tests
         run: |
-             gem install cucumber
-             gem install httparty
-             bundler install
-             bundle exec cucumber
-          
-      - name: Test marketplace action
-        uses: simple-elf/allure-report-action@master
-        if: always()
-        id: allure-report
-        with:
-          allure_results: report/allure-results
-          gh_pages: gh-pages
-          allure_report: allure-report
-          allure_history: allure-history
-          
+          gem install cucumber
+          bundle exec cucumber BROWSER=${{matrix.browser}}
+
       - name: Deploy report to Github Pages
         if: always()
-        uses: peaceiris/actions-gh-pages@v2
-        env:
+        uses: peaceiris/actions-gh-pages@v3
+        with:
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: allure-history
+          PUBLISH_DIR: ./report
+          destination_dir: ${{ matrix.browser}}
