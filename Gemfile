@@ -15,5 +15,6 @@ gem 'wait_until'
 gem 'webdriver'
 gem 'ffi', '1.15.3'
 gem "nokogiri", ">= 1.12.5"
+gem "addressable", ">= 2.8.0"
 
 
