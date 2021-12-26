@@ -14,5 +14,6 @@ gem 'site_prism', '~> 3.7', '>= 3.7.3'
 gem 'wait_until'
 gem 'webdriver'
 gem 'ffi', '1.15.3'
+gem "nokogiri", ">= 1.12.5"
 
 
