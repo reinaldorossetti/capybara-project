@@ -3,6 +3,18 @@
 Fluxo de Cadastro:
 feature cadastro >> cadastro_step >> cadastro_page >> cadastro_screen
 
+Principais gems:
+```
+source 'http://rubygems.org'
+
+gem 'capybara', '~> 3.35', '>= 3.35.3'
+gem 'cucumber', '~> 6.1.0'
+gem 'site_prism', '~> 3.7', '>= 3.7.3'
+gem 'webdriver'
+gem 'ffi', '1.15.3'
+````
+
+
 Teste de Janelas:
 ````
 bundle exec cucumber -t '@janelas' BROWSER=firefox
