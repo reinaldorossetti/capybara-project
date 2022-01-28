@@ -12,6 +12,7 @@ gem 'cucumber', '~> 6.1.0'
 gem 'site_prism', '~> 3.7', '>= 3.7.3'
 gem 'webdriver'
 gem 'ffi', '1.15.3'
+gem 'selenium-webdriver', '>= 3.142.7', '< 5.0'
 ````
 
 
