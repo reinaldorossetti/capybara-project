@@ -1,6 +1,5 @@
 require 'rspec'
 require 'capybara/rspec'
-require 'pry'
 require 'cucumber'
 require 'webdrivers'
 require 'capybara'
@@ -10,7 +9,6 @@ require 'report_builder'
 require 'json'
 require 'site_prism'
 require_relative 'helper'
-require 'erb'
 require 'faker'
 
 World(BaseTests)
