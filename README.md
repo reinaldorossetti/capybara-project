@@ -15,7 +15,7 @@ gem 'ffi', '1.15.3'
 gem 'selenium-webdriver', '>= 3.142.7', '< 5.0'
 ````
 
-** Versão do Ruby recomendada 2.6.X para o windows.
+** Versão do Ruby recomendada 2.6.X
 
 Após instalação do ruby instalar o bundler, não esquecer de instalar a versão do ruby com devkit para windows:
 ```
